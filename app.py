@@ -4,9 +4,14 @@ import re
 import numpy as np
 
 # --- Load Model and Tools ---
-model = pickle.load(open(r"C:\Users\Akhila\PROJECTS\sentment_analysis\sentiment_model.pkl", "rb"))
-vectorizer = pickle.load(open(r"C:\Users\Akhila\PROJECTS\sentment_analysis\tfidf_vectorizer.pkl", "rb"))
-le = pickle.load(open(r"C:\Users\Akhila\PROJECTS\sentment_analysis\label_encoder.pkl", "rb"))
+import os
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+model = pickle.load(open(os.path.join(BASE_DIR, "sentiment_model.pkl"), "rb"))
+vectorizer = pickle.load(open(os.path.join(BASE_DIR, "tfidf_vectorizer.pkl"), "rb"))
+le = pickle.load(open(os.path.join(BASE_DIR, "label_encoder.pkl"), "rb"))
+
 
 # --- Text Cleaning Function ---
 def clean_text(text):
@@ -60,5 +65,6 @@ with col2:
                     <p style="color: white; text-align: center;">Confidence: {confidence}%</p>
                 </div>
             """, unsafe_allow_html=True)
+
 
 
